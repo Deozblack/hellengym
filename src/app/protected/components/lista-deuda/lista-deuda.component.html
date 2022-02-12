@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h3"><strong>Lista de deudas</strong></h1>
+    <div class="">
+        <!-- <button *ngIf="corte.estatus === false" routerLink="nuevo/retiro" class="btn btn-warning text-white" type="submit">Retiro</button> -->
+        <!-- <button routerLink="nuevo" class="btn btn-danger text-white" type="submit">Crear deuda</button> -->
+        <button (click)="tipoDeuda()" class="btn btn-danger text-white" type="submit">Crear deuda</button>
+
+    </div>
+</div>
+
+<div class="tabla-scroll-ventas table-responsive">
+    <table class="table table-striped table-sm table-hover ">
+        <thead>
+            <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Deudor</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Perdida</th>
+                <th scope="col">Comentarios</th>
+                <th *ngIf="!corte" scope="col" class="text-center">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let deuda of deudas">
+                <td>{{deuda.producto | titlecase}}</td>
+                <td>{{deuda.deudor }}</td>
+                <td>{{deuda.cantidad }}</td>
+                <td>{{deuda.precio | currency }}</td>
+                <td>{{deuda.perdida | currency }}</td>
+                <td>{{deuda.concepto }}</td>
+                <td *ngIf="!corte" class="text-center">
+                    <button (click)="abonarDeuda(deuda._id)" type="button" class="btn btn-success btnOP m-1"><i class="bi bi-check-square-fill"></i></button>
+                    <button (click)="deleteDeuda(deuda)" type="button" class="btn btn-danger btnOP"><i class="bi bi-x-octagon-fill"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h2></h2>
+</div>

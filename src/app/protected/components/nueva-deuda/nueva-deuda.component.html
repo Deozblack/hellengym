@@ -1,0 +1,82 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h3"><strong>Inventario</strong></h1>
+    <button btnCancelar routerLink="../" class="btn btn-danger text-white" type="submit">Regresar</button>
+</div>
+<h3 class="text-center">Crear deuda</h3>
+
+
+<form action="" autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="crearDeuda()">
+    <div class="col mx-5">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="producto" class="form-label">Producto</label>
+                <select class="form-select" formControlName="producto">
+                    <option [value]="item.nombre" *ngFor="let item of productos">
+                        {{item.nombre}}
+                    </option>
+                  </select>
+                <div id="cantidad" class="form-text mb-3">
+                    Escoge el producto.
+                </div>
+            </div>
+            <div class="col-md-4" *ngIf="productoSeleccionado ">
+                <label for="deudor" class="form-label">Deudor</label>
+                <select class="form-select" formControlName="deudor">
+                    <option [value]="item.name +' '+ item.lastName" *ngFor="let item of users">
+                        {{item.name}} {{item.lastName}}
+                    </option>
+                  </select>
+                <div id="deudor" class="form-text mb-3">
+                    Seleccione al deudor.
+                </div>
+            </div>
+            <div class="col-md-4" *ngIf="productoSeleccionado ">
+                <label for="cantidad" class="form-label">Cantidad</label>
+                <input [(ngModel)]="productoSeleccionado.cantidad" formControlName="cantidad" type="number" id="cantidad" class="form-control" aria-describedby="cantidad" [min]="minCan" [max]="maxCan">
+                <div id="cantidad" class="form-text mb-3">
+                    Introduce la cantidad del producto.
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-4" *ngIf="productoSeleccionado">
+                <label for="precio" class="form-label">Precio</label>
+                <h4>{{productoSeleccionado.precio}}</h4>
+                <div id="precio" class="form-text mb-3">
+                    Precio del producto.
+                </div>
+            </div>
+            <div class="col-md-4" *ngIf="productoSeleccionado">
+                <label for="perdida" class="form-label">Perdida total.</label>
+                <h4>{{productoSeleccionado.precio * productoSeleccionado.cantidad}}</h4>
+                <div id="perdida" class="form-text mb-3">
+                    Perdida obtenida.
+                </div>
+            </div>
+            <div class="col-md-4" *ngIf="productoSeleccionado ">
+                <label for="ganancia" class="form-label">Hora y fecha</label>
+                <h4>{{fechaHoy | date: 'MMMM d, y, h:mm:ss '}}</h4>
+                <div id="ganancia" class="form-text mb-3">
+                    Hora y fecha de la venta.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" *ngIf="productoSeleccionado">
+                <label for="concepto" class="form-label">Comentario</label>
+                <input formControlName="concepto" type="text" name="concepto" id="concepto" class="form-control" aria-describedby="concepto">
+                <div id="concepto" class="form-text mb-3">
+                    Campo opcional. Ingrese algún comentario.
+                </div>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="productoSeleccionado">
+            <div class="col d-grid gap-1">
+                <button type="submit" class="btn bg-azul-200 text-white">Guardar</button>
+            </div>
+        </div>
+
+    </div>
+</form>

@@ -1,0 +1,72 @@
+<div class="cont-textos  align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <div class="col-12 col-md-6 col">
+        <h1 class="h4 text-fecha"><strong>Ventas del día: {{fechaHoy| date: 'MMMM dd, y '}}</strong></h1>
+    </div>
+    <div class="col-12 col-md-6 col d-flex justify-content-end align-items-center cont-btns-acciones ">
+        <h5 class="h4 text-caja"><strong>En caja: {{cantidadCaja | currency}}</strong></h5>
+        <button *ngIf="estadoCorte !== true" (click)="retirarEfectivo()" class="btn btn-danger text-white" type="submit">Retirar</button>
+        <button *ngIf="estadoCorte !== true" (click)="tipoVenta()" class="btn bg-azul-400 text-white" type="submit">Crear</button>
+    </div>
+</div>
+<div class="alert alert-info p-2 mb-2 d-flex align-items-center" role="alert">
+    <h6 class="m-0">Inventario actual:</h6>
+    <div class="d-flex flex-wrap align-items-center">
+        <p class="px-3 m-0" *ngFor="let item of productosInventario">
+            <strong>{{item.nombre}}:</strong> {{item.cantidad}}
+        </p>
+    </div>
+</div>
+
+<div *ngIf="estadoCorte === true" class="cont-corte-R">
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Se ha realizado el corte del día.</h4>
+        <span class="text-center">Comuníquese con algún administrador para deshacer el corte.</span>
+    </div>
+</div>
+<button *ngIf="estadoCorte === true" (click)="deleteCorte(corte)" class="btn btn-success">Deshacer Corte</button>
+<!-- *ngIf="corte.estatus === false" -->
+<div *ngIf="estadoCorte === false" class="tabla-scroll-ventas">
+    <table class="table table-striped table-sm table-hover ">
+        <thead>
+            <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Ganancia</th>
+                <th scope="col">Concepto</th>
+                <th scope="col" class="text-center">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let venta of ventas">
+                <td>{{venta.nombre | titlecase}}</td>
+                <td>{{venta.cantidad }}</td>
+                <td>{{venta.precio | currency }}</td>
+                <td>{{venta.ganancia | currency }}</td>
+                <td>{{venta.concepto }}</td>
+                <td *ngIf="venta.nombre === 'Retiro de caja'"></td>
+                <td class="text-center" *ngIf="venta.nombre !== 'Retiro de caja'">
+                    <button (click)="deleteIF(venta)" type="button" class="btn btn-danger btnOP"><i class="bi bi-trash-fill"></i></button>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+    <div class="cont-form">
+        <form [formGroup]="miFormulario" (ngSubmit)="crearCorte()">
+            <div class="row cont-corte">
+                <div class="col-md-4">
+                    <label for="concepto" class="form-label">Ganancias del día:</label>
+                    <h4>{{suma | currency}}</h4>
+                </div>
+                <div class="col-md-4 mt-3">
+                    <div class="col d-grid gap-1">
+                        <button type="submit" class="btn btn-danger text-white">Realizar corte</button>
+                        <!-- <h4 *ngIf="expression">Corte realizado</h4> -->
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

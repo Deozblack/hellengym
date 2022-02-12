@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h3"><strong>Historial de ventas de: {{fechaHoy| date: 'MMMM dd, y '}}</strong></h1>
+    <div class="col d-flex justify-content-end cont-btns-acciones">
+        <button routerLink="../../" class="btn bg-danger text-white" type="submit">Regresar</button>
+    </div>
+</div>
+<div class="tabla-scroll-ventas table-responsive">
+    <table class="table table-striped table-sm table-hover ">
+        <thead>
+            <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Ganancia neta</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Concepto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let venta of ventas">
+                <td>{{venta.nombre | titlecase}}</td>
+                <td>{{venta.cantidad }}</td>
+                <td>{{venta.precio | currency }}</td>
+                <td>{{venta.ganancia | currency }}</td>
+                <td>{{venta.fecha | date: 'MMMM d, y, h:mm:ss ' }}</td>
+                <td>{{venta.concepto }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Ganancia registrada: {{corte.corte | currency}} </h4>
+</div>

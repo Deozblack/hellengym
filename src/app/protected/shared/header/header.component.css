@@ -1,0 +1,14 @@
+.btn-salir {
+    cursor: pointer;
+    color: #fff;
+}
+
+.text-salir,
+.text-nombre {
+    margin: 0 7px;
+    color: #fff;
+}
+
+header {
+    background-color: #1670a5;
+}

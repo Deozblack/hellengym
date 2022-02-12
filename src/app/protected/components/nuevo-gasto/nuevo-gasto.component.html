@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h3"><strong>Inventario</strong></h1>
+    <button btnCancelar routerLink="../" class="btn btn-danger text-white" type="submit">Regresar</button>
+</div>
+<form action="" autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="crearGasto()">
+    <div class="col mx-5">
+        <h3 class="text-center">Crear gasto</h3>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label for="nombre" class="form-label">Concepto</label>
+                <input disabled value="Gasto" formArrayName="nombre" type="text" name="nombre" id="nombre" class="form-control">
+                <div id="nombre" class="form-text mb-3">
+                    Ingrese el concepto del gasto.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="ganancia" class="form-label">Perdida</label>
+                <input formControlName="ganancia" type="number" name="ganancia" id="ganancia" class="form-control">
+                <div id="ganancia" class="form-text mb-3">
+                    Ingrese la perdida.
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="ganancia" class="form-label">Hora y fecha</label>
+                <h4>{{fechaHoy | date: 'MMMM d, y, h:mm:ss '}}</h4>
+                <div id="ganancia" class="form-text mb-3">
+                    Hora y fecha de la venta.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label for="concepto" class="form-label">Descripción</label>
+                <input formControlName="concepto" type="text" name="concepto" id="concepto" class="form-control" aria-describedby="concepto">
+                <div id="concepto" class="form-text mb-3">
+                    Ingrese con detalle la descripción del gasto a generar.
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col d-grid gap-1">
+                <button type="submit" class="btn bg-azul-200 text-white">Guardar</button>
+            </div>
+        </div>
+
+    </div>
+</form>

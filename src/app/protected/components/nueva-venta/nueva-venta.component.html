@@ -1,0 +1,69 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h3"><strong>Inventario</strong></h1>
+    <button btnCancelar routerLink="../" class="btn btn-danger text-white" type="submit">Regresar</button>
+</div>
+<form action="" autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="crearVenta()">
+    <div class="col mx-5">
+        <h3 class="text-center">Crear ganancia</h3>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label for="nombre" class="form-label">Nombre</label>
+                <select class="form-select" formControlName="nombre">
+                    <option [value]="item.nombre" *ngFor="let item of productos">
+                        {{item.nombre}}
+                    </option>
+                  </select>
+                <div id="nombre" class="form-text mb-3">
+                    Escoge el producto a vender.
+                </div>
+            </div>
+            <div class="col-md-6" *ngIf="productoSeleccionado">
+                <label for="cantidad" class="form-label">Cantidad</label>
+                <input [(ngModel)]="productoSeleccionado.cantidad" formControlName="cantidad" type="number" id="cantidad" class="form-control" aria-describedby="cantidad" [min]="minCan" [max]="maxCan">
+                <div id="cantidad" class="form-text mb-3">
+                    Introduce la cantidad del producto.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4" *ngIf="productoSeleccionado">
+                <label for="precio" class="form-label">Precio</label>
+                <h4>{{productoSeleccionado.precio}}</h4>
+                <div id="precio" class="form-text mb-3">
+                    Precio del producto.
+                </div>
+            </div>
+            <div class="col-md-4" *ngIf="productoSeleccionado">
+                <label for="ganancia" class="form-label">Ganancia obtenida.</label>
+                <h4>{{productoSeleccionado.precio * productoSeleccionado.cantidad}}</h4>
+                <div id="ganancia" class="form-text mb-3">
+                    Ganancia obtenida.
+                </div>
+            </div>
+            <div class="col-md-4" *ngIf="productoSeleccionado">
+                <label for="ganancia" class="form-label">Hora y fecha</label>
+                <h4>{{fechaHoy | date: 'MMMM d, y, h:mm:ss '}}</h4>
+                <div id="ganancia" class="form-text mb-3">
+                    Hora y fecha de la venta.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" *ngIf="productoSeleccionado">
+                <label for="concepto" class="form-label">Concepto</label>
+                <input formControlName="concepto" type="text" name="concepto" id="concepto" class="form-control" aria-describedby="concepto">
+                <div id="concepto" class="form-text mb-3">
+                    Campo opcional. Ingrese algún comentario.
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col d-grid gap-1">
+                <button type="submit" class="btn bg-azul-200 text-white">Guardar</button>
+            </div>
+        </div>
+
+    </div>
+</form>

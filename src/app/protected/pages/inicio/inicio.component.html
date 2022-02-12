@@ -1,0 +1,30 @@
+<div class=" mb-3 animate__animated animate__fadeIn">
+    <div class="row">
+        <div class="col mt-3">
+            <h2><strong>Bienvenido:</strong> {{trabajador.name}} {{trabajador.lastName}}</h2>
+        </div>
+    </div>
+    <div class="row d-flex ">
+        <div class="col-md-10 alert alert-danger p-2 m-1" role="alert" *ngFor="let item of usuarios">
+            La inscripción de <strong>{{item.name | lowercase}} {{item.lastName | lowercase}}</strong> se vencera el día: <strong>{{item.dateEnd | date}}</strong>. si desea enviar una alerta al cliente favor de dar clic <a (click)="enviar(item)" class="alert-link">aquí</a>.
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-5 alert alert-warning p-3 m-1" role="alert">
+            <h3>Perdidas totales:</h3>
+            <p class="h1">{{suma | currency}}</p>
+            <button routerLink="../deudas" class="btn btn-warning">Ver deudas</button>
+        </div>
+        <div class="col-md-5 alert alert-success p-3 m-1" role="alert">
+            <h3>Ganancias del día:</h3>
+            <p class="h1">{{sumaVentas | currency}}</p>
+            <button routerLink="../ventas" class="btn btn-success">Ver ventas del día</button>
+        </div>
+    </div>
+    <!-- <div class="row">
+        <div style="display: block">
+            <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+            </canvas>
+        </div>
+    </div> -->
+</div>

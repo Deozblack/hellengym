@@ -1,0 +1,47 @@
+.cont-btns-acciones button {
+    margin: 0px 5px;
+}
+
+.cont-pro {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.cont-corte {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+}
+
+.tabla-scroll-ventas {
+    height: 350px;
+    overflow-y: scroll;
+}
+
+.cont-form {
+    overflow-x: hidden;
+}
+
+.text-caja {
+    padding-right: 30px;
+}
+
+.cont-textos {
+    display: flex;
+}
+
+@media (max-width:425px) {
+    .text-caja {
+        font-size: 18px;
+    }
+    .text-fecha {
+        font-size: 18px;
+    }
+    .cont-textos {
+        flex-wrap: wrap;
+    }
+    .cont-btns-acciones {
+        display: block;
+    }
+}

@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h3"><strong>Historial de ventas</strong></h1>
+</div>
+<div class="tabla-scroll">
+    <table class="table table-striped table-sm table-hover ">
+        <thead>
+            <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Ganancia</th>
+                <th scope="col">Estatus</th>
+                <th scope="col" class="text-center">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let corte of cortes">
+                <td>{{corte.fecha | date: 'MMMM d, y, h:mm:ss '}}</td>
+                <td>{{corte.corte | currency}}</td>
+                <td>{{corte.estatus }}</td>
+                <td class="text-center">
+                    <button [routerLink]="['historial/', corte.fecha]" type="button" class="btn btn-secondary verMas"><i class="bi bi-eye-fill"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

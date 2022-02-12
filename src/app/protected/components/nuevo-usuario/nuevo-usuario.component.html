@@ -1,0 +1,53 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h3"><strong>Trabajadores</strong></h1>
+    <button btnCancelar routerLink="../../" class="btn btn-danger text-white" type="submit">Regresar</button>
+</div>
+<form action="" autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="validacionCrear()">
+    <div class="col mx-5">
+        <h3 class="text-center">Crear inscripción</h3>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label for="name" class="form-label">Nombre</label>
+                <input formControlName="name" type="text" id="name" class="form-control" aria-describedby="name">
+                <div id="name" class="form-text mb-3">
+                    Introduce el nombre del cliente.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="lastName" class="form-label">Apellido</label>
+                <input formControlName="lastName" type="text" id="lastName" class="form-control" aria-describedby="lastName">
+                <div id="lastName" class="form-text mb-3">
+                    Introduce el apellido del cliente.
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label for="phoneNumber" class="form-label">Número de teléfono</label>
+                <input formControlName="phoneNumber" type="text" id="phoneNumber" class="form-control" aria-describedby="phoneNumber" minlength="10" maxlength="10">
+                <div id="phoneNumber" class="form-text mb-3">
+                    Introduce el número teléfonico del cliente.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="signedUp" class="form-label">Tipo de inscripción</label>
+                <select class="form-select" formControlName="signedUp">
+                    <option [value]="item" *ngFor="let item of tipoIns">{{item}}</option>
+                  </select>
+                <div id="signedUp" class="form-text mb-3">
+                    Introduce el tipo de inscripción para el cliente.
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col d-grid gap-1">
+                <button type="submit" class="btn bg-azul-200 text-white">Guardar</button>
+            </div>
+        </div>
+
+    </div>
+</form>

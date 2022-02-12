@@ -1,1 +1,193 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css");
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('./assets/fonts/poppins/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url('./assets/fonts/poppins/Poppins-Medium.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('./assets/fonts/poppins/Poppins-Bold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-SemiBold;
+    src: url('./assets/fonts/poppins/Poppins-SemiBold.ttf');
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Poppins-Regular;
+}
+
+body {
+    font-size: .875rem;
+}
+
+.tabla-scroll {
+    height: 500px;
+    overflow-y: scroll;
+}
+
+.btnOP {
+    font: 13px;
+    padding: 0 5px;
+}
+
+
+/* COLORES OFICIALES */
+
+.bg-azul-700 {
+    background-color: #2f8ba3!important;
+}
+
+.bg-azul-400 {
+    background: #741c4c;
+}
+
+.bg-azul-200 {
+    background-color: #741c4c;
+}
+
+thead {
+    background-color: #2f8ba3;
+}
+
+thead tr {
+    border: 1px solid;
+}
+
+thead th {
+    font-size: 16px;
+}
+
+tbody {
+    border: 1px solid #ccc;
+}
+
+tbody td {
+    font-size: 14px;
+}
+
+.btn-danger {
+    background-color: #C0392B;
+}
+
+@media (max-width:375px) {
+    thead th {
+        font-size: 12px;
+    }
+    tbody td {
+        font-size: 12px;
+    }
+}
+
+
+/* CSS DASHBOARD */
+
+.feather {
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+}
+
+
+/*
+   * Sidebar
+   */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    /* rtl:raw:
+    right: 0;
+    */
+    bottom: 0;
+    /* rtl:remove */
+    left: 0;
+    z-index: 100;
+    /* Behind the navbar */
+    padding: 48px 0 0;
+    /* Height of navbar */
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+@media (max-width: 767.98px) {
+    .sidebar {
+        top: 3rem;
+    }
+}
+
+.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Scrollable contents if viewport is shorter than content. */
+}
+
+.sidebar .nav-link {
+    font-weight: 500;
+    color: #333;
+}
+
+.sidebar .nav-link .feather {
+    margin-right: 4px;
+    color: #727272;
+}
+
+.sidebar .nav-link.active {
+    color: #2470dc;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+    color: inherit;
+}
+
+.sidebar-heading {
+    font-size: .75rem;
+    text-transform: uppercase;
+}
+
+
+/*
+   * Navbar
+   */
+
+.navbar-brand {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    font-size: 1rem;
+    background-color: rgba(0, 0, 0, .25);
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+}
+
+.navbar .navbar-toggler {
+    top: .25rem;
+    right: 1rem;
+}
+
+.navbar .form-control {
+    padding: .75rem 1rem;
+    border-width: 0;
+    border-radius: 0;
+}
+
+.form-control-dark {
+    color: #fff;
+    background-color: rgba(255, 255, 255, .1);
+    border-color: rgba(255, 255, 255, .1);
+}
+
+.form-control-dark:focus {
+    border-color: transparent;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+}
